@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "A",
+      "region": "east",
+      "rural": false
+    },
+    {
+      "id": "B",
+      "region": "east",
+      "rural": false
+    },
+    {
+      "id": "C",
+      "region": "east",
+      "rural": false
+    },
+    {
+      "id": "D",
+      "region": "west",
+      "rural": true
+    },
+    {
+      "id": "E",
+      "region": "west",
+      "rural": true
+    },
+    {
+      "id": "F",
+      "region": "west",
+      "rural": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "BA",
+      "from": "B",
+      "to": "A",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "BC",
+      "from": "B",
+      "to": "C",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "CB",
+      "from": "C",
+      "to": "B",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "CD",
+      "from": "C",
+      "to": "D",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "DC",
+      "from": "D",
+      "to": "C",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "DE",
+      "from": "D",
+      "to": "E",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "ED",
+      "from": "E",
+      "to": "D",
+      "metres": 100,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "AD",
+      "from": "A",
+      "to": "D",
+      "metres": 200,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "DA",
+      "from": "D",
+      "to": "A",
+      "metres": 200,
+      "delay_seconds": 0,
+      "steps": 0,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "AC",
+      "from": "A",
+      "to": "C",
+      "metres": 50,
+      "delay_seconds": 0,
+      "steps": 3,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    },
+    {
+      "id": "CA",
+      "from": "C",
+      "to": "A",
+      "metres": 50,
+      "delay_seconds": 0,
+      "steps": 3,
+      "slope_permille": 0,
+      "closed": false,
+      "profiles": [
+        "walk",
+        "wheel"
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "walk",
+      "seconds_per_km": 1000,
+      "step_free": false,
+      "max_slope_permille": 100,
+      "max_seconds": 300,
+      "decay": [
+        {
+          "seconds": 100,
+          "weight_ppm": 1000000
+        },
+        {
+          "seconds": 200,
+          "weight_ppm": 500000
+        },
+        {
+          "seconds": 300,
+          "weight_ppm": 250000
+        }
+      ]
+    },
+    {
+      "id": "wheel",
+      "seconds_per_km": 2000,
+      "step_free": true,
+      "max_slope_permille": 30,
+      "max_seconds": 500,
+      "decay": [
+        {
+          "seconds": 200,
+          "weight_ppm": 1000000
+        },
+        {
+          "seconds": 500,
+          "weight_ppm": 500000
+        }
+      ]
+    }
+  ],
+  "communities": [
+    {
+      "id": "elder-wheel",
+      "node": "A",
+      "profile": "wheel",
+      "service": "elder",
+      "demand": 8,
+      "priority": 2,
+      "max_fee_cents": 1000
+    },
+    {
+      "id": "elder-walk",
+      "node": "B",
+      "profile": "walk",
+      "service": "elder",
+      "demand": 6,
+      "priority": 1,
+      "max_fee_cents": 1000
+    },
+    {
+      "id": "nursery",
+      "node": "A",
+      "profile": "walk",
+      "service": "nursery",
+      "demand": 4,
+      "priority": 1,
+      "max_fee_cents": 1000
+    },
+    {
+      "id": "isolated",
+      "node": "F",
+      "profile": "walk",
+      "service": "elder",
+      "demand": 2,
+      "priority": 1,
+      "max_fee_cents": 1000
+    }
+  ],
+  "facilities": [
+    {
+      "id": "elder-hub",
+      "node": "D",
+      "service": "elder",
+      "capacity": 10,
+      "fee_cents": 500,
+      "profiles": [
+        "walk",
+        "wheel"
+      ],
+      "open": true,
+      "pool": "hub"
+    },
+    {
+      "id": "elder-mirror",
+      "node": "C",
+      "service": "elder",
+      "capacity": 10,
+      "fee_cents": 500,
+      "profiles": [
+        "walk",
+        "wheel"
+      ],
+      "open": true,
+      "pool": "hub"
+    },
+    {
+      "id": "nursery-hub",
+      "node": "C",
+      "service": "nursery",
+      "capacity": 10,
+      "fee_cents": 500,
+      "profiles": [
+        "walk",
+        "wheel"
+      ],
+      "open": true,
+      "pool": "hub"
+    },
+    {
+      "id": "remote",
+      "node": "E",
+      "service": "elder",
+      "capacity": 4,
+      "fee_cents": 500,
+      "profiles": [
+        "walk",
+        "wheel"
+      ],
+      "open": true,
+      "pool": "remote"
+    }
+  ]
+}
